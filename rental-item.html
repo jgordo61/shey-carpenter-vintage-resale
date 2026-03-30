@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rental — Shey Carpenter Vintage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=18">
+  <style>
+    .ri-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      margin-top: var(--nav-h);
+    }
+    .ri-img {
+      position: sticky;
+      top: var(--nav-h);
+      height: calc(100vh - var(--nav-h));
+      overflow: hidden;
+    }
+    .ri-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ri-info {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .ri-back {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      text-decoration: none;
+      margin-bottom: 48px;
+      display: inline-block;
+    }
+    .ri-back:hover { color: var(--cream); }
+    .ri-title {
+      font-family: var(--script);
+      font-size: clamp(42px, 4.5vw, 64px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cream);
+      margin: 0 0 12px;
+    }
+    .ri-price {
+      font-family: var(--script);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--accent);
+      margin: 0 0 40px;
+    }
+    .ri-price span {
+      font-family: var(--script);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--taupe);
+    }
+    .ri-body {
+      font-family: var(--script);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.9;
+      color: var(--taupe);
+      margin: 0 0 40px;
+      max-width: 480px;
+    }
+    .ri-status {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      margin-bottom: 40px;
+    }
+    .ri-status.booked {
+      border-color: var(--muted);
+      color: var(--taupe);
+    }
+    .ri-cta {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      background: var(--cream);
+      color: var(--bg);
+      text-decoration: none;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+    }
+    .ri-cta:hover { opacity: 0.8; }
+    @media (max-width: 768px) {
+      .ri-layout { grid-template-columns: 1fr; }
+      .ri-img { position: relative; height: 70vw; top: 0; }
+      .ri-info { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay"></div>
+  <aside class="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close">Close</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="cart-checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="index.html">Shey Carpenter <span>Vintage</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+        </svg>
+        <span class="cart-count"></span>
+      </button>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="ri-layout">
+    <div class="ri-img">
+      <img id="ri-img" src="" alt="">
+    </div>
+    <div class="ri-info">
+      <a href="styling.html" class="ri-back">← Rental</a>
+      <h1 class="ri-title" id="ri-title"></h1>
+      <div class="ri-price" id="ri-price-block"></div>
+      <span class="ri-status" id="ri-status"></span>
+      <p class="ri-body" id="ri-body"></p>
+      <a class="ri-cta" id="ri-cta" href="styling.html#inquire"></a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Shey Carpenter <span>Vintage</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Shey Carpenter. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const name   = params.get('name')   || 'Rental Piece';
+      const price  = params.get('price')  || '—';
+      const status = params.get('status') || 'available';
+      let images = [];
+      try { images = JSON.parse(params.get('images') || '[]'); } catch(e) {}
+
+      document.title = name + ' — Shey Carpenter Vintage';
+      document.getElementById('ri-title').textContent = name;
+      document.getElementById('ri-price-block').innerHTML = price + ' <span>/ day</span>';
+
+      const statusEl = document.getElementById('ri-status');
+      const ctaEl    = document.getElementById('ri-cta');
+      if (status === 'available') {
+        statusEl.textContent = 'Available';
+        ctaEl.textContent = 'Inquire to Rent';
+      } else {
+        statusEl.textContent = 'Currently Booked';
+        statusEl.classList.add('booked');
+        ctaEl.textContent = 'Join Waitlist';
+      }
+
+      const imgWrap = document.querySelector('.ri-img');
+      const mainImg = document.getElementById('ri-img');
+
+      if (images.length > 0) {
+        mainImg.src = images[0];
+        mainImg.alt = name;
+      }
+
+      if (images.length > 1) {
+        images.forEach(src => { const i = new Image(); i.src = src; });
+
+        const overlay = document.createElement('img');
+        overlay.style.cssText = [
+          'position:absolute','inset:0','width:100%','height:100%',
+          'object-fit:cover','opacity:0',
+          'transition:opacity 1.1s ease',
+          'pointer-events:none','display:block'
+        ].join(';');
+        imgWrap.style.position = 'relative';
+        imgWrap.appendChild(overlay);
+        mainImg.style.transition = 'opacity 1.1s ease';
+
+        let index = 0, useOverlay = false;
+        setInterval(() => {
+          index = (index + 1) % images.length;
+          if (!useOverlay) {
+            overlay.src = images[index];
+            overlay.style.opacity = '1';
+          } else {
+            mainImg.src = images[index];
+            overlay.style.opacity = '0';
+          }
+          useOverlay = !useOverlay;
+        }, 1620);
+      }
+    })();
+  </script>
+</body>
+</html>

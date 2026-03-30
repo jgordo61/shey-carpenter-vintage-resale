@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styling — Shey Carpenter Vintage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=18">
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay"></div>
+  <aside class="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close">Close</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="cart-checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="index.html">Shey Carpenter <span>Vintage</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+        </svg>
+        <span class="cart-count"></span>
+      </button>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Services -->
+  <section class="services-section" style="margin-top: var(--nav-h)">
+    <div class="fade-up" style="text-align: center;">
+      <h2>Styling Services</h2>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-number">01</div>
+        <h3>Wardrobe Edit</h3>
+        <p>A deep dive into your existing wardrobe. We'll identify what's working, what's not, and what gaps need filling — with a curated shopping list at the end. Offered in-person (NYC/LA) or virtually via video call.</p>
+        <div class="service-price">$175 <span>/ 2 hours</span></div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">02</div>
+        <h3>Vintage Sourcing</h3>
+        <p>You share your style goals and measurements — Shey does the hunting. She'll source vintage pieces to fit your aesthetic from her personal network and curated picks, including first access to new shop arrivals.</p>
+        <div class="service-price">$95 <span>/ session</span></div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">03</div>
+        <h3>Event &amp; Shoot Styling</h3>
+        <p>Full-look styling for a specific event, editorial shoot, or occasion. Includes concept development, sourcing, and fitting. Perfect for photoshoots, galas, red carpet moments, or any event where you want to arrive dressed.</p>
+        <div class="service-price">$250 <span>/ look</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Booking -->
+  <section class="booking-section" id="book">
+    <div style="text-align: center; margin-bottom: 48px;">
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 3vw, 48px); font-weight: 300; color: var(--cream);">Book a <em>Session</em></h2>
+    </div>
+    <div class="booking-inner">
+
+      <div class="booking-form fade-up" style="grid-column: 1 / -1; max-width: 640px; margin: 0 auto; width: 100%">
+        <form id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first_name" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="wardrobe-edit">Wardrobe Edit — $175</option>
+              <option value="vintage-sourcing">Vintage Sourcing — $95</option>
+              <option value="event-styling">Event &amp; Shoot Styling — $250</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="format">Session Format</label>
+            <select id="format" name="format">
+              <option value="" disabled selected>In-person or virtual?</option>
+              <option value="virtual">Virtual (video call)</option>
+              <option value="in-person-ny">In-Person — New York</option>
+              <option value="in-person-la">In-Person — Los Angeles</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Shey About Your Style Goals</label>
+            <textarea id="message" name="message" placeholder="Share a bit about your aesthetic, what you're working toward, any upcoming events, etc."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send Inquiry</button>
+        </form>
+
+        <div class="form-success">
+          <h3>Thank you.</h3>
+          <p>Shey will be in touch within 48 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Shey Carpenter <span>Vintage</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Shey Carpenter. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>

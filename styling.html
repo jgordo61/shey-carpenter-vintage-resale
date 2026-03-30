@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rental — Shey Carpenter Vintage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=18">
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay"></div>
+  <aside class="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close">Close</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="cart-checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="index.html">Shey Carpenter <span>Vintage</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+        </svg>
+        <span class="cart-count"></span>
+      </button>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <section class="how-it-works fade-up" style="margin-top: var(--nav-h)">
+    <p class="how-intro">Explore Shey's curated rental collection — hand-selected vintage pieces available by the day or weekend. Each item is one of a kind. Fill out the form with your desired piece, dates, and a note about the occasion. Shey confirms availability and pricing within 24 hours. Pick up in NYC or LA, or ship nationwide. Rentals run 4 or 7 days. Everything arrives cleaned, pressed, and ready to wear — just return it the same way.</p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Rental Layout -->
+  <div class="shop-layout">
+
+    <!-- Rental Grid -->
+    <div>
+      <div class="shop-header">
+        <span class="shop-count">45 pieces available</span>
+        <div class="shop-sort">
+          Sort
+          <select class="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low–High</option>
+            <option value="price-desc">Price: High–Low</option>
+            <option value="alpha">A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid">
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/1/34f6de68-bcf4-4911-b02e-805932deb707.jpg", "images/for-rental/1/79d1667a-8cf5-4668-9c2f-3e4c83407a36.jpg", "images/for-rental/1/f1eaed08-af41-4dd5-8fbd-df0e687c1e47.jpg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/1/34f6de68-bcf4-4911-b02e-805932deb707.jpg" alt="Rental Piece 1">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 1</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/2/IMG_0001.jpeg", "images/for-rental/2/IMG_0010.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/2/IMG_0001.jpeg" alt="Rental Piece 2">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 2</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/3/IMG_0517.jpeg", "images/for-rental/3/IMG_0521.jpeg", "images/for-rental/3/IMG_0527.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/3/IMG_0517.jpeg" alt="Rental Piece 3">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 3</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/4/IMG_0535.JPG", "images/for-rental/4/IMG_0535.jpeg", "images/for-rental/4/IMG_0537.JPG", "images/for-rental/4/IMG_0541.JPG", "images/for-rental/4/IMG_0544.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/4/IMG_0535.JPG" alt="Rental Piece 4">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 4</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/5/IMG_0652.jpeg", "images/for-rental/5/IMG_0653.jpeg", "images/for-rental/5/IMG_0698.jpeg", "images/for-rental/5/IMG_0703.jpeg", "images/for-rental/5/IMG_0714.jpeg", "images/for-rental/5/IMG_0748.jpeg", "images/for-rental/5/IMG_0791.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/5/IMG_0652.jpeg" alt="Rental Piece 5">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 5</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/6/IMG_0751.JPG", "images/for-rental/6/IMG_0762.JPG", "images/for-rental/6/IMG_0771.JPG", "images/for-rental/6/IMG_0789.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/6/IMG_0751.JPG" alt="Rental Piece 6">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 6</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/7/IMG_0669.jpeg", "images/for-rental/7/IMG_0725.jpeg", "images/for-rental/7/IMG_0955.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/7/IMG_0669.jpeg" alt="Rental Piece 7">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 7</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/8/IMG_0869.jpeg", "images/for-rental/8/IMG_0873.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/8/IMG_0869.jpeg" alt="Rental Piece 8">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 8</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/9/IMG_1362.jpeg", "images/for-rental/9/IMG_1366.jpeg", "images/for-rental/9/IMG_1374.jpeg", "images/for-rental/9/IMG_1413.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/9/IMG_1362.jpeg" alt="Rental Piece 9">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 9</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/10/IMG_1342.JPG", "images/for-rental/10/IMG_1356.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/10/IMG_1342.JPG" alt="Rental Piece 10">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 10</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/11/IMG_9647.jpeg", "images/for-rental/11/IMG_9648.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/11/IMG_9647.jpeg" alt="Rental Piece 11">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 11</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/12/IMG_9944.jpeg", "images/for-rental/12/IMG_9974.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/12/IMG_9944.jpeg" alt="Rental Piece 12">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 12</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/13/IMG_9281.jpeg", "images/for-rental/13/IMG_9396.jpeg", "images/for-rental/13/IMG_9400.jpeg", "images/for-rental/13/IMG_9603.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/13/IMG_9281.jpeg" alt="Rental Piece 13">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 13</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/14/IMG_4154.jpeg", "images/for-rental/14/IMG_4529.jpeg", "images/for-rental/14/IMG_4530.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/14/IMG_4154.jpeg" alt="Rental Piece 14">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 14</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/15/IMG_1304.jpeg", "images/for-rental/15/IMG_1501.jpeg", "images/for-rental/15/IMG_1510.jpeg", "images/for-rental/15/IMG_1544.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/15/IMG_1304.jpeg" alt="Rental Piece 15">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 15</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/16/IMG_9272.jpeg", "images/for-rental/16/IMG_9303.jpeg", "images/for-rental/16/IMG_9309.jpeg", "images/for-rental/16/IMG_9348.jpeg", "images/for-rental/16/IMG_9472.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/16/IMG_9272.jpeg" alt="Rental Piece 16">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 16</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/17/IMG_1511.jpeg", "images/for-rental/17/IMG_1519.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/17/IMG_1511.jpeg" alt="Rental Piece 17">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 17</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/18/IMG_5490.jpeg", "images/for-rental/18/IMG_5511.jpeg", "images/for-rental/18/IMG_5545.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/18/IMG_5490.jpeg" alt="Rental Piece 18">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 18</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/19/IMG_6514.jpeg", "images/for-rental/19/IMG_6539.jpeg", "images/for-rental/19/IMG_6604.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/19/IMG_6514.jpeg" alt="Rental Piece 19">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 19</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/20/IMG_4790.jpeg", "images/for-rental/20/IMG_5414.JPG", "images/for-rental/20/IMG_5417.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/20/IMG_4790.jpeg" alt="Rental Piece 20">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 20</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/21/IMG_5122.jpeg", "images/for-rental/21/IMG_5134.jpeg", "images/for-rental/21/IMG_5159.jpeg", "images/for-rental/21/IMG_5178.jpeg", "images/for-rental/21/IMG_5180.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/21/IMG_5122.jpeg" alt="Rental Piece 21">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 21</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/22/IMG_5405.JPG", "images/for-rental/22/IMG_5406.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/22/IMG_5405.JPG" alt="Rental Piece 22">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 22</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/23/IMG_7163.jpeg", "images/for-rental/23/IMG_7319.jpeg", "images/for-rental/23/IMG_7352.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/23/IMG_7163.jpeg" alt="Rental Piece 23">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 23</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/24/IMG_8594.jpeg", "images/for-rental/24/IMG_8627.jpeg", "images/for-rental/24/IMG_8634.jpeg", "images/for-rental/24/IMG_8646.jpeg", "images/for-rental/24/IMG_8686.jpeg", "images/for-rental/24/IMG_8693.jpeg", "images/for-rental/24/IMG_8710.jpeg", "images/for-rental/24/IMG_8727.jpeg", "images/for-rental/24/IMG_8877.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/24/IMG_8594.jpeg" alt="Rental Piece 24">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 24</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/25/IMG_5038.jpeg", "images/for-rental/25/IMG_5040.jpeg", "images/for-rental/25/IMG_5648.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/25/IMG_5038.jpeg" alt="Rental Piece 25">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 25</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/26/IMG_2485.jpeg", "images/for-rental/26/IMG_2519.jpeg", "images/for-rental/26/IMG_2520.jpeg", "images/for-rental/26/IMG_2526.jpeg", "images/for-rental/26/IMG_2534.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/26/IMG_2485.jpeg" alt="Rental Piece 26">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 26</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/27/IMG_3226.jpeg", "images/for-rental/27/IMG_3235.jpeg", "images/for-rental/27/IMG_3292.jpeg", "images/for-rental/27/IMG_3598.jpeg", "images/for-rental/27/IMG_3676.jpeg", "images/for-rental/27/IMG_3745.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/27/IMG_3226.jpeg" alt="Rental Piece 27">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 27</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/28/IMG_9018.PNG", "images/for-rental/28/IMG_9058.PNG", "images/for-rental/28/IMG_9059.PNG", "images/for-rental/28/IMG_9060.PNG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/28/IMG_9018.PNG" alt="Rental Piece 28">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 28</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/29/IMG_3889.jpeg", "images/for-rental/29/IMG_3906.jpeg", "images/for-rental/29/IMG_4026.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/29/IMG_3889.jpeg" alt="Rental Piece 29">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 29</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/30/IMG_3350.jpeg", "images/for-rental/30/IMG_3369.jpeg", "images/for-rental/30/IMG_3417.jpeg", "images/for-rental/30/IMG_3436.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/30/IMG_3350.jpeg" alt="Rental Piece 30">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 30</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/31/IMG_4162.jpeg", "images/for-rental/31/IMG_4164.JPG", "images/for-rental/31/IMG_4192.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/31/IMG_4162.jpeg" alt="Rental Piece 31">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 31</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/32/IMG_8770.jpeg", "images/for-rental/32/IMG_8803.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/32/IMG_8770.jpeg" alt="Rental Piece 32">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 32</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/33/IMG_4399.jpeg", "images/for-rental/33/IMG_4456.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/33/IMG_4399.jpeg" alt="Rental Piece 33">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 33</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/34/IMG_3127.jpeg", "images/for-rental/34/IMG_3132.jpeg", "images/for-rental/34/IMG_3258.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/34/IMG_3127.jpeg" alt="Rental Piece 34">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 34</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/35/IMG_2278.jpeg", "images/for-rental/35/IMG_2309.jpeg", "images/for-rental/35/IMG_2426.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/35/IMG_2278.jpeg" alt="Rental Piece 35">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 35</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/36/IMG_2987.jpeg", "images/for-rental/36/IMG_3055.jpeg", "images/for-rental/36/IMG_3188.jpeg", "images/for-rental/36/IMG_3237.jpeg", "images/for-rental/36/IMG_9565.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/36/IMG_2987.jpeg" alt="Rental Piece 36">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 36</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/37/IMG_4366.jpeg", "images/for-rental/37/IMG_4479.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/37/IMG_4366.jpeg" alt="Rental Piece 37">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 37</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/38/IMG_2178.jpeg", "images/for-rental/38/IMG_2223.jpeg", "images/for-rental/38/IMG_2244.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/38/IMG_2178.jpeg" alt="Rental Piece 38">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 38</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/39/IMG_8617.jpeg", "images/for-rental/39/IMG_8633.jpeg", "images/for-rental/39/IMG_8818.jpeg", "images/for-rental/39/IMG_8836.jpeg", "images/for-rental/39/IMG_8889.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/39/IMG_8617.jpeg" alt="Rental Piece 39">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 39</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/40/IMG_4332.jpeg", "images/for-rental/40/IMG_4345.jpeg", "images/for-rental/40/IMG_4537.jpeg", "images/for-rental/40/IMG_4789.jpeg", "images/for-rental/40/IMG_5003.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/40/IMG_4332.jpeg" alt="Rental Piece 40">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 40</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/41/IMG_5357.JPG", "images/for-rental/41/IMG_5370.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/41/IMG_5357.JPG" alt="Rental Piece 41">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 41</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/42/IMG_4778.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/42/IMG_4778.JPG" alt="Rental Piece 42">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 42</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/43/IMG_5374.JPG"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/43/IMG_5374.JPG" alt="Rental Piece 43">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 43</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/45/IMG_0483.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/45/IMG_0483.jpeg" alt="Rental Piece 45">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 45</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-availability="available" data-images='["images/for-rental/46/IMG_1152.jpeg"]'>
+          <a href="rental-item.html">
+            <div class="product-card-img">
+              <img src="images/for-rental/46/IMG_1152.jpeg" alt="Rental Piece 46">
+              <span class="rental-status available">Available</span>
+              <button class="product-quick-add">Inquire to Rent</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Rental Piece 46</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="rental-price">— <span>/ day</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Shey Carpenter <span>Vintage</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Shey Carpenter. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>

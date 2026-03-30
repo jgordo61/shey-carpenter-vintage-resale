@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — Shey Carpenter Vintage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=18">
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay"></div>
+  <aside class="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close">Close</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="cart-checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="index.html">Shey Carpenter <span>Vintage</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+        </svg>
+        <span class="cart-count"></span>
+      </button>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Shop Layout -->
+  <div class="shop-layout" style="margin-top: var(--nav-h)">
+
+    <!-- Product Grid -->
+    <div>
+      <div class="shop-header">
+        <span class="shop-count">7 items</span>
+        <div class="shop-sort">
+          Sort
+          <select class="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low–High</option>
+            <option value="price-desc">Price: High–Low</option>
+            <option value="alpha">A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid">
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/Black Neglige /IMG_4057.jpeg", "images/for-purchase/Black Neglige /IMG_4178.jpeg"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/Black Neglige /IMG_4057.jpeg" alt="Black Neglige ">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Black Neglige </h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/Black Paisley/IMG_4363.JPG"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/Black Paisley/IMG_4363.JPG" alt="Black Paisley">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Black Paisley</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/Black W: Lace Up/IMG_2801.JPG", "images/for-purchase/Black W: Lace Up/IMG_2810.JPG", "images/for-purchase/Black W: Lace Up/IMG_2812.JPG"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/Black W: Lace Up/IMG_2801.JPG" alt="Black W: Lace Up">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Black W: Lace Up</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/Pink Slip/72FE88B9-FA09-4372-8B8A-FA76253EFC24.jpg", "images/for-purchase/Pink Slip/867A8587-DED6-492A-9AEB-19BB32EC0B70.jpg", "images/for-purchase/Pink Slip/A639E1E6-8918-479A-94CB-0D6997DC7492.jpg"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/Pink Slip/72FE88B9-FA09-4372-8B8A-FA76253EFC24.jpg" alt="Pink Slip">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Pink Slip</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/Red W: Crystal/IMG_3208.jpeg", "images/for-purchase/Red W: Crystal/IMG_3214.jpeg", "images/for-purchase/Red W: Crystal/IMG_3217.jpeg", "images/for-purchase/Red W: Crystal/IMG_3302.jpeg"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/Red W: Crystal/IMG_3208.jpeg" alt="Red W: Crystal">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Red W: Crystal</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/Stamped W: Corset/IMG_3780.jpeg", "images/for-purchase/Stamped W: Corset/IMG_3790.jpeg"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/Stamped W: Corset/IMG_3780.jpeg" alt="Stamped W: Corset">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>Stamped W: Corset</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="product-card fade-up" data-images='["images/for-purchase/White Tennis Dress/IMG_4436.jpeg", "images/for-purchase/White Tennis Dress/IMG_4533.jpeg", "images/for-purchase/White Tennis Dress/IMG_4534.jpeg", "images/for-purchase/White Tennis Dress/IMG_4599.jpeg"]'>
+          <a href="product.html">
+            <div class="product-card-img">
+              <img src="images/for-purchase/White Tennis Dress/IMG_4436.jpeg" alt="White Tennis Dress">
+              <button class="product-quick-add">Quick Add</button>
+            </div>
+            <div class="product-card-body">
+              <h3>White Tennis Dress</h3>
+              <div class="product-meta">
+                <span class="product-details">—</span>
+                <span class="product-price">—</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Shey Carpenter <span>Vintage</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Shey Carpenter. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>

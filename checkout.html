@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Shey Carpenter Vintage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=18">
+  <script src="https://web.squarecdn.com/v1/square.js"></script>
+  <style>
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      margin-top: var(--nav-h);
+    }
+
+    /* ── Order Summary (left) ── */
+    .checkout-summary {
+      background: #F0EDE8;
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+    }
+    .checkout-summary-title {
+      font-family: var(--script);
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 0 0 40px;
+    }
+    .checkout-items {
+      flex: 1;
+    }
+    .checkout-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--muted);
+    }
+    .checkout-item img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      background: var(--muted);
+    }
+    .checkout-item-info {
+      flex: 1;
+    }
+    .checkout-item-name {
+      font-family: var(--script);
+      font-size: 20px;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .checkout-item-meta {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--taupe);
+      text-transform: uppercase;
+    }
+    .checkout-item-price {
+      font-family: var(--script);
+      font-size: 20px;
+      color: var(--cream);
+    }
+    .checkout-totals {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--muted);
+    }
+    .checkout-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      padding: 8px 0;
+    }
+    .checkout-total-row.grand {
+      font-size: 13px;
+      color: var(--cream);
+      padding-top: 16px;
+      margin-top: 8px;
+      border-top: 1px solid var(--muted);
+    }
+
+    /* ── Payment Form (right) ── */
+    .checkout-form-wrap {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+    }
+    .checkout-back {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      text-decoration: none;
+      margin-bottom: 48px;
+      display: inline-block;
+    }
+    .checkout-back:hover { color: var(--cream); }
+    .checkout-form-title {
+      font-family: var(--script);
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--cream);
+      margin: 0 0 40px;
+    }
+    .checkout-section-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--muted);
+    }
+    .checkout-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .checkout-fields.single { grid-template-columns: 1fr; }
+    .checkout-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .checkout-field.full { grid-column: 1 / -1; }
+    .checkout-field label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+    .checkout-field input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--muted);
+      padding: 10px 0;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .checkout-field input:focus { border-bottom-color: var(--accent); }
+    .checkout-field input::placeholder { color: var(--taupe); opacity: 0.6; }
+
+    /* Square card element */
+    #card-container {
+      margin-bottom: 32px;
+    }
+    #card-container iframe {
+      border: none !important;
+    }
+    .sq-card-wrapper {
+      border-bottom: 1px solid var(--muted);
+      padding: 10px 0;
+    }
+
+    .checkout-submit {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 18px 48px;
+      background: var(--cream);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+      width: 100%;
+    }
+    .checkout-submit:hover { opacity: 0.8; }
+    .checkout-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .checkout-error {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: #c0392b;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .checkout-success {
+      display: none;
+      text-align: center;
+      padding: 80px 0;
+    }
+    .checkout-success h2 {
+      font-family: var(--script);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .checkout-success p {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--taupe);
+      letter-spacing: 0.06em;
+    }
+
+    .checkout-empty {
+      display: none;
+      text-align: center;
+      padding: 120px 48px;
+      grid-column: 1 / -1;
+    }
+    .checkout-empty p {
+      font-family: var(--script);
+      font-size: 28px;
+      color: var(--taupe);
+      margin-bottom: 24px;
+    }
+    .checkout-empty a {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .checkout-layout { grid-template-columns: 1fr; }
+      .checkout-summary { padding: 48px 24px; }
+      .checkout-form-wrap { padding: 48px 24px; }
+      .checkout-fields { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="index.html">Shey Carpenter <span>Vintage</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="checkout-layout" id="checkout-layout">
+
+    <!-- Empty state -->
+    <div class="checkout-empty" id="checkout-empty">
+      <p>Your cart is empty.</p>
+      <a href="shop.html">← Back to Shop</a>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="checkout-summary" id="checkout-summary">
+      <h2 class="checkout-summary-title">Your Order</h2>
+      <div class="checkout-items" id="checkout-items"></div>
+      <div class="checkout-totals">
+        <div class="checkout-total-row">
+          <span>Subtotal</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="checkout-total-row">
+          <span>Shipping</span>
+          <span>Calculated at next step</span>
+        </div>
+        <div class="checkout-total-row grand">
+          <span>Total</span>
+          <span id="grand-total">$0.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="checkout-form-wrap" id="checkout-form-wrap">
+      <a href="shop.html" class="checkout-back">← Continue Shopping</a>
+      <h2 class="checkout-form-title">Payment</h2>
+
+      <div id="checkout-form-inner">
+        <div class="checkout-section-label">Contact</div>
+        <div class="checkout-fields">
+          <div class="checkout-field">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" placeholder="Jane" required>
+          </div>
+          <div class="checkout-field">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" placeholder="Smith" required>
+          </div>
+          <div class="checkout-field full">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="jane@example.com" required>
+          </div>
+        </div>
+
+        <div class="checkout-section-label">Shipping Address</div>
+        <div class="checkout-fields">
+          <div class="checkout-field full">
+            <label for="address">Street Address</label>
+            <input type="text" id="address" placeholder="123 Main St" required>
+          </div>
+          <div class="checkout-field">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="New York" required>
+          </div>
+          <div class="checkout-field">
+            <label for="state">State</label>
+            <input type="text" id="state" placeholder="NY" required>
+          </div>
+          <div class="checkout-field">
+            <label for="zip">ZIP Code</label>
+            <input type="text" id="zip" placeholder="10001" required>
+          </div>
+        </div>
+
+        <div class="checkout-section-label">Card Details</div>
+        <div id="card-container"></div>
+
+        <div class="checkout-error" id="checkout-error"></div>
+
+        <button class="checkout-submit" id="pay-btn" disabled>
+          Place Order
+        </button>
+      </div>
+
+      <!-- Success state -->
+      <div class="checkout-success" id="checkout-success">
+        <h2>Thank you.</h2>
+        <p>Your order has been placed. A confirmation will be sent to your email shortly.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/main.js?v=2"></script>
+  <script>
+    // ── Replace with your Square credentials ──────────────────
+    const SQUARE_APP_ID     = 'YOUR_SQUARE_APP_ID';
+    const SQUARE_LOCATION_ID = 'YOUR_SQUARE_LOCATION_ID';
+    // ──────────────────────────────────────────────────────────
+
+    const cart = JSON.parse(localStorage.getItem('scv_cart') || '[]');
+
+    // Show empty state if cart is empty
+    if (cart.length === 0) {
+      document.getElementById('checkout-empty').style.display = 'block';
+      document.getElementById('checkout-summary').style.display = 'none';
+      document.getElementById('checkout-form-wrap').style.display = 'none';
+    } else {
+      // Render cart items
+      const itemsEl = document.getElementById('checkout-items');
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        const price = parseFloat(item.price) || 0;
+        subtotal += price;
+        itemsEl.innerHTML += `
+          <div class="checkout-item">
+            <img src="${item.img || ''}" alt="${item.name}">
+            <div class="checkout-item-info">
+              <span class="checkout-item-name">${item.name}</span>
+              <span class="checkout-item-meta">${item.size || ''} ${item.era ? '· ' + item.era : ''}</span>
+            </div>
+            <span class="checkout-item-price">$${price.toFixed(2)}</span>
+          </div>`;
+      });
+
+      document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('grand-total').textContent = '$' + subtotal.toFixed(2);
+
+      // ── Initialize Square Web Payments SDK ──────────────────
+      async function initSquare() {
+        if (!window.Square) {
+          console.error('Square SDK not loaded');
+          return;
+        }
+
+        const payments = Square.payments(SQUARE_APP_ID, SQUARE_LOCATION_ID);
+
+        const card = await payments.card({
+          style: {
+            '.input-container': { borderColor: 'transparent', borderBottomColor: '#E2D8CC' },
+            '.input-container.is-focus': { borderColor: 'transparent', borderBottomColor: '#8B7355' },
+            input: { color: '#1A1612', fontFamily: '"Montserrat", sans-serif', fontSize: '13px' },
+            'input::placeholder': { color: '#9B8E80' },
+            '.message-text': { color: '#9B8E80' },
+            '.message-icon': { color: '#9B8E80' },
+          }
+        });
+
+        await card.attach('#card-container');
+        document.getElementById('pay-btn').disabled = false;
+
+        document.getElementById('pay-btn').addEventListener('click', async () => {
+          const btn = document.getElementById('pay-btn');
+          const errorEl = document.getElementById('checkout-error');
+          errorEl.style.display = 'none';
+          btn.disabled = true;
+          btn.textContent = 'Processing...';
+
+          // Validate fields
+          const firstName = document.getElementById('first-name').value.trim();
+          const lastName  = document.getElementById('last-name').value.trim();
+          const email     = document.getElementById('email').value.trim();
+
+          if (!firstName || !lastName || !email) {
+            errorEl.textContent = 'Please fill in all required fields.';
+            errorEl.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Place Order';
+            return;
+          }
+
+          // Tokenize card
+          const result = await card.tokenize();
+          if (result.status !== 'OK') {
+            errorEl.textContent = result.errors?.[0]?.message || 'Card error. Please try again.';
+            errorEl.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Place Order';
+            return;
+          }
+
+          // Send to Cloudflare Worker
+          try {
+            const res = await fetch('/square-charge', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                sourceId: result.token,
+                amount: subtotal.toFixed(2),
+                buyerEmail: email,
+                buyerName: firstName + ' ' + lastName,
+              }),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+              localStorage.removeItem('scv_cart');
+              document.getElementById('checkout-form-inner').style.display = 'none';
+              document.getElementById('checkout-success').style.display = 'block';
+            } else {
+              errorEl.textContent = data.error || 'Payment failed. Please try again.';
+              errorEl.style.display = 'block';
+              btn.disabled = false;
+              btn.textContent = 'Place Order';
+            }
+          } catch (err) {
+            errorEl.textContent = 'Network error. Please try again.';
+            errorEl.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Place Order';
+          }
+        });
+      }
+
+      initSquare();
+    }
+  </script>
+</body>
+</html>
