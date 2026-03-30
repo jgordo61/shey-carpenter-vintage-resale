@@ -76,6 +76,64 @@ export default {
       return new Response(JSON.stringify({ success: false, error: errorMsg }), { status: 400, headers });
     }
 
+    // ── Contact / booking form endpoint ────────────────────────
+    if (url.pathname === '/contact') {
+
+      if (request.method === 'OPTIONS') {
+        return new Response(null, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        });
+      }
+
+      if (request.method !== 'POST') {
+        return new Response('Method Not Allowed', { status: 405 });
+      }
+
+      const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+
+      let body;
+      try {
+        body = await request.json();
+      } catch {
+        return new Response(JSON.stringify({ success: false, error: 'Invalid request body' }), { status: 400, headers });
+      }
+
+      const { first_name, last_name, email, service, format, message } = body;
+
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Shey Carpenter Vintage <onboarding@resend.dev>',
+          to: 'Shey@shefound.us',
+          reply_to: email,
+          subject: `New Booking Inquiry — ${first_name} ${last_name}`,
+          html: `
+            <h2>New Booking Inquiry</h2>
+            <p><strong>Name:</strong> ${first_name} ${last_name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Service:</strong> ${service || '—'}</p>
+            <p><strong>Format:</strong> ${format || '—'}</p>
+            <p><strong>Message:</strong><br>${message || '—'}</p>
+          `,
+        }),
+      });
+
+      if (res.ok) {
+        return new Response(JSON.stringify({ success: true }), { headers });
+      }
+
+      const err = await res.json();
+      return new Response(JSON.stringify({ success: false, error: err.message || 'Failed to send' }), { status: 500, headers });
+    }
+
     // ── Everything else → static assets ────────────────────────
     return env.ASSETS.fetch(request);
   },
