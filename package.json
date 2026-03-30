@@ -1,0 +1,7 @@
+{
+  "name": "shey-carpenter-vintage",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r css js images index.html shop.html styling.html services.html product.html rental-item.html checkout.html dist/"
+  }
+}
