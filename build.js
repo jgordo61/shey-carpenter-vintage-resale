@@ -162,7 +162,7 @@ let shopCount = 0;
 
 if (fs.existsSync(purchaseRoot)) {
   const folders = fs.readdirSync(purchaseRoot)
-    .filter(f => fs.statSync(path.join(purchaseRoot, f)).isDirectory())
+    .filter(f => fs.statSync(path.join(purchaseRoot, f)).isDirectory() && !f.startsWith('New Folder'))
     .sort((a, b) => a.localeCompare(b));
 
   for (const folder of folders) {
@@ -188,7 +188,7 @@ let rentalCount = 0;
 
 if (fs.existsSync(rentalRoot)) {
   const folders = fs.readdirSync(rentalRoot)
-    .filter(f => fs.statSync(path.join(rentalRoot, f)).isDirectory())
+    .filter(f => fs.statSync(path.join(rentalRoot, f)).isDirectory() && !f.startsWith('New Folder'))
     .sort((a, b) => {
       // Sort numerically if folder names are numbers
       const numA = parseInt(a, 10);
