@@ -32,15 +32,16 @@ function stripRtf(rtf) {
 }
 
 function readDetails(folderPath) {
-  // Accept details.rtf or details.txt
+  // Accept any .rtf file in the folder, or details.txt as fallback
   let raw = null;
-  const rtfPath = path.join(folderPath, 'details.rtf');
-  const txtPath = path.join(folderPath, 'details.txt');
+  const files = fs.readdirSync(folderPath);
+  const rtfFile = files.find(f => f.toLowerCase().endsWith('.rtf'));
+  const txtFile = files.find(f => f.toLowerCase() === 'details.txt');
 
-  if (fs.existsSync(rtfPath)) {
-    raw = stripRtf(fs.readFileSync(rtfPath, 'utf8'));
-  } else if (fs.existsSync(txtPath)) {
-    raw = fs.readFileSync(txtPath, 'utf8');
+  if (rtfFile) {
+    raw = stripRtf(fs.readFileSync(path.join(folderPath, rtfFile), 'utf8'));
+  } else if (txtFile) {
+    raw = fs.readFileSync(path.join(folderPath, txtFile), 'utf8');
   }
 
   if (!raw) return { name: '', price: '—', description: '' };
@@ -64,7 +65,7 @@ function readDetails(folderPath) {
 function getImages(folderPath, webPath) {
   const exts = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG'];
   const files = fs.readdirSync(folderPath)
-    .filter(f => exts.includes(path.extname(f)) && f !== 'details.txt');
+    .filter(f => exts.includes(path.extname(f)));
 
   // Natural / numeric sort: 1.jpg, 2.jpg, 10.jpg ...
   files.sort((a, b) => {
