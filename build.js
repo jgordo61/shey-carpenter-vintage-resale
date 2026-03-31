@@ -2,7 +2,7 @@
  * Build script — Shey Carpenter Vintage
  *
  * Reads images/for-purchase/ and images/for-rental/ subfolders.
- * Each subfolder may contain a details.txt with:
+ * Each subfolder may contain a details.rtf (or details.txt) with:
  *   Name: ...
  *   Price: ...
  *   Description: ...
@@ -17,11 +17,35 @@ const path = require('path');
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
-function readDetails(folderPath) {
-  const filePath = path.join(folderPath, 'details.txt');
-  if (!fs.existsSync(filePath)) return { name: '', price: '—', description: '' };
+function stripRtf(rtf) {
+  return rtf
+    .replace(/\{\\fonttbl[\s\S]*?\}/g, '')
+    .replace(/\{\\colortbl[\s\S]*?\}/g, '')
+    .replace(/\{\\[*][^{}]*\}/g, '')
+    .replace(/\\par\b\s?/g, '\n')
+    .replace(/\\line\b\s?/g, '\n')
+    .replace(/\\\n/g, '')
+    .replace(/\\[a-zA-Z]+\-?\d*\s?/g, '')
+    .replace(/[{}]/g, '')
+    .replace(/\r/g, '')
+    .trim();
+}
 
-  const lines = fs.readFileSync(filePath, 'utf8').split('\n');
+function readDetails(folderPath) {
+  // Accept details.rtf or details.txt
+  let raw = null;
+  const rtfPath = path.join(folderPath, 'details.rtf');
+  const txtPath = path.join(folderPath, 'details.txt');
+
+  if (fs.existsSync(rtfPath)) {
+    raw = stripRtf(fs.readFileSync(rtfPath, 'utf8'));
+  } else if (fs.existsSync(txtPath)) {
+    raw = fs.readFileSync(txtPath, 'utf8');
+  }
+
+  if (!raw) return { name: '', price: '—', description: '' };
+
+  const lines = raw.split('\n');
   const result = { name: '', price: '—', description: '' };
 
   for (const line of lines) {
