@@ -103,6 +103,26 @@
       align-self: flex-start;
     }
     .ri-cta:hover { opacity: 0.8; }
+    .ri-rate-select {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      background: transparent;
+      border: 1px solid var(--accent);
+      padding: 12px 16px;
+      width: 100%;
+      max-width: 360px;
+      margin-bottom: 32px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      outline: none;
+    }
+    .ri-rate-select option {
+      background: #1a1612;
+      color: var(--cream);
+    }
     @media (max-width: 768px) {
       .ri-layout { grid-template-columns: 1fr; }
       .ri-img { position: relative; height: 70vw; top: 0; }
@@ -163,6 +183,7 @@
       <a href="styling.html" class="ri-back">← Rental</a>
       <h1 class="ri-title" id="ri-title"></h1>
       <div class="ri-price" id="ri-price-block"></div>
+      <select class="ri-rate-select" id="ri-rate-select" style="display:none"></select>
       <span class="ri-status" id="ri-status"></span>
       <p class="ri-body" id="ri-body"></p>
       <a class="ri-cta" id="ri-cta" href="styling.html#inquire"></a>
@@ -188,12 +209,28 @@
       const name   = params.get('name')   || 'Rental Piece';
       const price  = params.get('price')  || '—';
       const status = params.get('status') || 'available';
-      let images = [];
+      let images = [], rates = [];
       try { images = JSON.parse(params.get('images') || '[]'); } catch(e) {}
+      try { rates  = JSON.parse(params.get('rates')  || '[]'); } catch(e) {}
 
       document.title = name + ' — Shey Carpenter Vintage';
       document.getElementById('ri-title').textContent = name;
-      document.getElementById('ri-price-block').innerHTML = price + ' <span>/ day</span>';
+
+      // Render rates dropdown or fallback price
+      const rateSelect   = document.getElementById('ri-rate-select');
+      const priceBlock   = document.getElementById('ri-price-block');
+      if (rates.length > 0) {
+        rates.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r;
+          opt.textContent = r;
+          rateSelect.appendChild(opt);
+        });
+        rateSelect.style.display = 'block';
+        priceBlock.style.display = 'none';
+      } else {
+        priceBlock.innerHTML = price + ' <span>/ day</span>';
+      }
 
       const statusEl = document.getElementById('ri-status');
       const ctaEl    = document.getElementById('ri-cta');

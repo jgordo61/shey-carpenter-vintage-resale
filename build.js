@@ -55,12 +55,12 @@ function readDetails(folderPath) {
     raw = fs.readFileSync(path.join(folderPath, txtFile), 'utf8');
   }
 
-  if (!raw) return { name: '', price: '—', description: '' };
+  if (!raw) return { name: '', price: '—', description: '', rates: [] };
 
   // If file uses Name:/Price:/Description: labels, use those
   if (/^(name|price|description)\s*:/im.test(raw)) {
     const lines = raw.split('\n');
-    const result = { name: '', price: '—', description: '' };
+    const result = { name: '', price: '—', description: '', rates: [] };
     for (const line of lines) {
       const colon = line.indexOf(':');
       if (colon === -1) continue;
@@ -73,23 +73,25 @@ function readDetails(folderPath) {
     return result;
   }
 
-  // Otherwise parse macOS TextEdit format: price on first line, name second, size third
+  // Otherwise parse macOS TextEdit format: price/rates on separate lines
   const lines = raw.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-  const result = { name: '', price: '—', description: '' };
+  const result = { name: '', price: '—', description: '', rates: [] };
 
   for (const line of lines) {
-    if (result.price === '—' && /\$/.test(line)) {
-      // Extract just the price token (e.g. "$40." or "150$")
+    // Rental rate lines: contain $ and a duration keyword or "Final Sale"
+    if (/\$/.test(line) && /(per day|for \d+\s*day|Final Sale)/i.test(line)) {
+      result.rates.push(line);
+      if (result.price === '—') result.price = line; // first rate = default display price
+    } else if (result.price === '—' && /\$/.test(line)) {
+      // Purchase price (no duration keyword)
       const match = line.match(/(\$[\d,]+\.?|[\d,]+\$)/);
       if (match) result.price = normalizePrice(match[0]);
     }
   }
 
-  // Size line (last non-empty line, if it looks like a size)
-  const sizeLine = lines[lines.length - 1];
-  if (/^(XXS|XS|S|M|L|XL|XXL|Size)/i.test(sizeLine)) {
-    result.description = sizeLine;
-  }
+  // Size line (last non-empty line before rates, if it looks like a size)
+  const sizeLine = lines.find(l => /^(XXS|XS|S|M|L|XL|XXL|Size)/i.test(l));
+  if (sizeLine) result.description = sizeLine;
 
   return result;
 }
@@ -144,12 +146,13 @@ function shopCard(folderName, images, details) {
 }
 
 function rentalCard(folderName, images, details) {
-  const first   = images[0] || '';
-  const imgJson = JSON.stringify(images).replace(/'/g, '&#39;');
-  const name    = details.name || folderName;
+  const first     = images[0] || '';
+  const imgJson   = JSON.stringify(images).replace(/'/g, '&#39;');
+  const ratesJson = JSON.stringify(details.rates || []).replace(/'/g, '&#39;');
+  const name      = details.name || folderName;
 
   return `
-        <div class="product-card fade-up" data-images='${imgJson}' data-availability="available">
+        <div class="product-card fade-up" data-images='${imgJson}' data-rates='${ratesJson}' data-availability="available">
           <a href="rental-item.html">
             <div class="product-card-img">
               <img src="${escapeHtml(first)}" alt="${escapeHtml(name)}">

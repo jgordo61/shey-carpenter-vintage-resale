@@ -354,9 +354,10 @@ document.querySelectorAll('.product-card a').forEach(link => {
     const name   = card.querySelector('h3')?.textContent?.trim() || '';
     const price  = card.querySelector('.product-price, .rental-price')?.textContent?.trim() || '—';
     const status = card.dataset.availability || 'available';
+    const rates  = card.getAttribute('data-rates') || '[]';
     const base   = link.getAttribute('href').split('?')[0];
 
-    const params = new URLSearchParams({ name, images: imagesAttr, price, status });
+    const params = new URLSearchParams({ name, images: imagesAttr, price, status, rates });
     window.location.href = base + '?' + params.toString();
   });
 });
