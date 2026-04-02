@@ -12,16 +12,12 @@
     .pd-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - var(--nav-h));
+      height: calc(100vh - var(--nav-h));
       margin-top: var(--nav-h);
     }
     .pd-img {
-      position: sticky;
-      top: var(--nav-h);
-      height: calc(100vh - var(--nav-h));
       overflow: hidden;
-      /* needed for crossfade overlay */
-      position: -webkit-sticky;
+      position: relative;
     }
     .pd-img img {
       width: 100%;
@@ -33,6 +29,7 @@
       padding: 72px 64px;
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
     }
     .pd-back {
       font-family: var(--sans);

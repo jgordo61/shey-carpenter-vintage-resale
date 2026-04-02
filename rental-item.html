@@ -12,14 +12,12 @@
     .ri-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - var(--nav-h));
+      height: calc(100vh - var(--nav-h));
       margin-top: var(--nav-h);
     }
     .ri-img {
-      position: sticky;
-      top: var(--nav-h);
-      height: calc(100vh - var(--nav-h));
       overflow: hidden;
+      position: relative;
     }
     .ri-img img {
       width: 100%;
@@ -32,7 +30,7 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-      min-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
     }
     .ri-back {
       font-family: var(--sans);
