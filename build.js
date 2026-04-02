@@ -81,7 +81,11 @@ function readDetails(folderPath) {
     // Rental rate lines: contain $ and a duration keyword or "Final Sale"
     if (/\$/.test(line) && /(per day|for \d+\s*day|Final Sale)/i.test(line)) {
       result.rates.push(line);
-      if (result.price === '—') result.price = line; // first rate = default display price
+      // Extract day rate for card display: "Starting at $10 per day" → "$10/day"
+      if (result.price === '—' && /per day/i.test(line)) {
+        const m = line.match(/\$[\d,]+/);
+        if (m) result.price = m[0] + '/day';
+      }
     } else if (result.price === '—' && /\$/.test(line)) {
       // Purchase price (no duration keyword)
       const match = line.match(/(\$[\d,]+\.?|[\d,]+\$)/);
