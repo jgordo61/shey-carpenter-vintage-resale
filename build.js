@@ -21,14 +21,25 @@ function stripRtf(rtf) {
   return rtf
     .replace(/\{\\fonttbl[\s\S]*?\}/g, '')
     .replace(/\{\\colortbl[\s\S]*?\}/g, '')
-    .replace(/\{\\[*][^{}]*\}/g, '')
+    .replace(/\{\\\*[\s\S]*?\}/g, '')
     .replace(/\\par\b\s?/g, '\n')
     .replace(/\\line\b\s?/g, '\n')
-    .replace(/\\\n/g, '')
-    .replace(/\\[a-zA-Z]+\-?\d*\s?/g, '')
+    // backslash + newline = line break in macOS TextEdit RTF
+    .replace(/\\\n/g, '\n')
+    // RTF escape sequences like \'e8 → decode basic latin-1
+    .replace(/\\'([0-9a-fA-F]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/\\[a-zA-Z]+\-?\d*[ ]?/g, '')
     .replace(/[{}]/g, '')
     .replace(/\r/g, '')
     .trim();
+}
+
+function normalizePrice(str) {
+  // Handle formats: $40. / 150$ / 80$. / $1100 / $12,000 / 65$.
+  str = str.trim().replace(/\.$/, '').trim(); // remove trailing period
+  if (/^\$/.test(str)) return str;            // already $XX
+  if (/\$$/.test(str)) return '$' + str.slice(0, -1).trim(); // XX$ → $XX
+  return str;
 }
 
 function readDetails(folderPath) {
@@ -46,17 +57,38 @@ function readDetails(folderPath) {
 
   if (!raw) return { name: '', price: '—', description: '' };
 
-  const lines = raw.split('\n');
+  // If file uses Name:/Price:/Description: labels, use those
+  if (/^(name|price|description)\s*:/im.test(raw)) {
+    const lines = raw.split('\n');
+    const result = { name: '', price: '—', description: '' };
+    for (const line of lines) {
+      const colon = line.indexOf(':');
+      if (colon === -1) continue;
+      const key = line.slice(0, colon).trim().toLowerCase();
+      const val = line.slice(colon + 1).trim();
+      if (key === 'name')        result.name        = val;
+      if (key === 'price')       result.price       = val;
+      if (key === 'description') result.description = val;
+    }
+    return result;
+  }
+
+  // Otherwise parse macOS TextEdit format: price on first line, name second, size third
+  const lines = raw.split('\n').map(l => l.trim()).filter(l => l.length > 0);
   const result = { name: '', price: '—', description: '' };
 
   for (const line of lines) {
-    const colon = line.indexOf(':');
-    if (colon === -1) continue;
-    const key = line.slice(0, colon).trim().toLowerCase();
-    const val = line.slice(colon + 1).trim();
-    if (key === 'name')        result.name        = val;
-    if (key === 'price')       result.price       = val;
-    if (key === 'description') result.description = val;
+    if (result.price === '—' && /\$/.test(line)) {
+      // Extract just the price token (e.g. "$40." or "150$")
+      const match = line.match(/(\$[\d,]+\.?|[\d,]+\$)/);
+      if (match) result.price = normalizePrice(match[0]);
+    }
+  }
+
+  // Size line (last non-empty line, if it looks like a size)
+  const sizeLine = lines[lines.length - 1];
+  if (/^(XXS|XS|S|M|L|XL|XXL|Size)/i.test(sizeLine)) {
+    result.description = sizeLine;
   }
 
   return result;
