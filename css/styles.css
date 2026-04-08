@@ -103,6 +103,14 @@ nav {
   font-weight: 300;
   letter-spacing: 0.12em;
   color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 .nav-logo span {
   color: var(--accent);
