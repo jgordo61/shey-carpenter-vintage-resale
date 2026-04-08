@@ -111,6 +111,7 @@ nav {
   height: 90px;
   width: auto;
   display: block;
+  margin-right: -8px;
 }
 .nav-logo span {
   color: var(--accent);
