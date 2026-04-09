@@ -365,7 +365,7 @@
     const SQUARE_LOCATION_ID = 'LG3A0RNQH06Q9';
     // ──────────────────────────────────────────────────────────
 
-    const cart = JSON.parse(localStorage.getItem('scv_cart') || '[]');
+    // cart is already declared by main.js — do not redeclare
 
     // Show empty state if cart is empty
     if (cart.length === 0) {

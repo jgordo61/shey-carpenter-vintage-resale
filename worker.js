@@ -72,8 +72,9 @@ export default {
         return new Response(JSON.stringify({ success: true, paymentId: data.payment.id }), { headers });
       }
 
-      const errorMsg = data.errors?.[0]?.detail || 'Payment failed';
-      return new Response(JSON.stringify({ success: false, error: errorMsg }), { status: 400, headers });
+      const err0 = data.errors?.[0];
+      const errorMsg = [err0?.category, err0?.code, err0?.detail].filter(Boolean).join(' — ') || 'Payment failed';
+      return new Response(JSON.stringify({ success: false, error: errorMsg, env: env.SQUARE_ENVIRONMENT || 'not-set' }), { status: 400, headers });
     }
 
     // ── Contact / booking form endpoint ────────────────────────
