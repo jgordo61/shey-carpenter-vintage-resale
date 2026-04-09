@@ -255,7 +255,7 @@ console.log(`✓ styling.html — ${rentalCount} items`);
 // --- Copy remaining static files ---
 const staticFiles = [
   'index.html', 'product.html', 'rental-item.html',
-  'services.html', 'checkout.html',
+  'services.html', 'checkout.html', 'info.html',
 ];
 for (const file of staticFiles) {
   const src = path.join(root, file);

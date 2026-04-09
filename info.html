@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info — She Found Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=18">
+  <style>
+    .info-page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 60px) 32px 80px;
+    }
+
+    .info-page h1 {
+      font-family: var(--script);
+      font-size: 52px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .info-page .tos-title {
+      font-family: var(--mono, 'Montserrat'), sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 6px;
+    }
+
+    .info-page .revised {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--mid);
+      margin-bottom: 48px;
+    }
+
+    .info-page .intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--dark);
+      margin-bottom: 40px;
+    }
+
+    .info-page section {
+      margin-bottom: 36px;
+    }
+
+    .info-page h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border, #e0d9d0);
+    }
+
+    .info-page p,
+    .info-page li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      line-height: 1.85;
+      color: #3a3530;
+    }
+
+    .info-page ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    .info-page ul li {
+      margin-bottom: 6px;
+    }
+
+    .info-page p + p {
+      margin-top: 12px;
+    }
+
+    .info-page a {
+      color: var(--dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .info-page {
+        padding: calc(var(--nav-h) + 40px) 20px 60px;
+      }
+      .info-page h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay"></div>
+  <aside class="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close">Close</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="cart-checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="index.html"><img src="images/SFU.svg" alt="She Found Us" class="nav-logo-img">She Found <span>Us</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+      <li><a href="info.html">Info</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+        </svg>
+        <span class="cart-count"></span>
+      </button>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Info / Terms -->
+  <div class="info-page">
+
+    <p class="tos-title">SheFoundUs Terms and Conditions</p>
+    <h1>Info</h1>
+    <p class="revised">Revised April 2026</p>
+
+    <p class="intro">Terms of Service (these "Terms") for www.shefound.us (the "Website"), operated by or on behalf of Shedelande Carpenter ("Company", "we" or "SheFoundUs"). The Website and any content, tools, features and functionality offered on or through our Website are collectively referred to as the "Services". These Terms govern your access to and use of the Services. Please read these Terms carefully, as they include important information about your legal rights. By accessing and/or using the Services, you are agreeing to these Terms. If you do not understand or agree to these Terms, please do not use the Services.</p>
+    <p class="intro">For purposes of these Terms, "you" and "your" means you as the user of the Services. If you use the Services on behalf of a company or other entity then "you" includes you and that entity, and you represent and warrant that (a) you are an authorized representative of the entity with the authority to bind the entity to these Terms, and (b) you agree to these Terms on the entity's behalf.</p>
+
+    <section>
+      <h2>1. Agreement Overview</h2>
+      <p>By using the services provided by SheFoundUs, you agree to comply with and be bound by the following terms and conditions. Please read these terms and conditions carefully before using our clothing rental services.</p>
+    </section>
+
+    <section>
+      <h2>2. Rental Period</h2>
+      <p>a. The standard rental period for each item is either 5, 10, 15 or 30 days, as specified on the website.</p>
+      <p>b. <strong>Late Return:</strong> Customers will be liable for a late fee of $40 per day for each day the rented item is returned after the agreed-upon rental period. Late fees will continue to accrue until the total late fee amount equals 100% of the full retail price of the rented item, or the item is considered lost, whichever comes first.</p>
+    </section>
+
+    <section>
+      <h2>3. Damage and Loss</h2>
+      <p>a. Customers are responsible for the care and safekeeping of rented items during the rental period.</p>
+      <p>b. In the event of significant damage to a rented item or if the item is not returned within 15 days of the agreed upon return date, the customer is liable for 100% of the full retail price of the garment, payable directly to SheFoundUs.</p>
+      <p>c. "Significant damage" includes but is not limited to stains, rips, tears, and alterations that affect the usability or marketability of the item, or otherwise at our discretion.</p>
+      <p>d. "Loss" includes any rentals not returned on or before 15 days after the agreed upon return date of a rental, as well as any stolen or misplaced package deliveries. Once an order is marked as delivered by the carrier, SheFoundUs is no longer responsible for the package. Customers are responsible for ensuring the safe and timely receipt of deliveries at the provided shipping address.</p>
+    </section>
+
+    <section>
+      <h2>4. Payment Authorization</h2>
+      <p>By using our services, customers authorize SheFoundUs to retain and charge a payment method on file or any other applicable payment methods associated with the customer for any applicable fees, including late fees, damage fees, loss fees and up to 100% of the full retail price of a garment in the event of non-return. In the event that a customer's payment method on file is unusable, customers authorize SheFoundUs to file claims and pursue collection methods up to 100% the full retail price of rented garment(s).</p>
+    </section>
+
+    <section>
+      <h2>5. Inspection Process</h2>
+      <p>a. Upon return, each rented item will be inspected by SheFoundUs for damage.</p>
+      <p>b. Customers will be notified of any damage within a reasonable time frame after the return.</p>
+    </section>
+
+    <section>
+      <h2>6. Cancellation</h2>
+      <p>Cancellation requests made at least 7 days before a rental's start date can be accommodated with a full refund to the original payment method, or a full refund in store credit. Refund and cancellation requests made on or less than 7 days before a rental's start date or after shipment dispatch are strictly non-refundable.</p>
+      <p>For sizing questions and further assistance, please email <a href="mailto:shey@shefound.us">shey@shefound.us</a>. Rentals are not cancellable or refundable due to fit.</p>
+      <p>Please note that due to the nature of our rental model, some garments may exhibit minor signs of previous wear, including faint marks or light fabric wear. While all items are professionally cleaned and inspected before each rental, certain stains or imperfections may not be fully removable. These instances are considered normal for pre-worn garments and are not eligible for refund or exchange. We appreciate your understanding as we work to extend the life of each piece in support of a more sustainable fashion system.</p>
+      <p>If you require further assistance with the condition of your pre-worn rental, please email <a href="mailto:shey@shefound.us">shey@shefound.us</a> with images for assistance within 48 hours of delivery. Items must be returned to UPS or in-store within 48 hours of receipt to be eligible for resolution.</p>
+    </section>
+
+    <section>
+      <h2>7. Communication</h2>
+      <p>a. Customers are responsible for providing accurate and up-to-date contact information, including email, active payment method and phone number.</p>
+      <p>b. SheFoundUs will communicate with customers primarily through the contact information provided.</p>
+    </section>
+
+    <section>
+      <h2>8. Shipping Delays</h2>
+      <p>Once an order is handed over to our shipping partners, such as UPS, USPS, FedEx, or DHL, SheFoundUs is not liable for any delays caused by factors beyond our control. These may include, but are not limited to:</p>
+      <ul>
+        <li>Carrier delays due to high demand, weather, or other unforeseen circumstances</li>
+        <li>Invalid or incomplete shipping addresses provided by the customer</li>
+        <li>Customer-initiated changes or rerouting of the shipment</li>
+      </ul>
+      <p>While we work hard to minimize any disruptions, we do not offer refunds on rentals that are delayed for reasons beyond our control.</p>
+    </section>
+
+    <section>
+      <h2>8. Dispute Resolution</h2>
+      <p>a. In the event of a dispute regarding damage, late fees, or other issues, customers and SheFoundUs agree to engage in good faith negotiations to resolve the dispute.</p>
+      <p>b. If a resolution cannot be reached, the dispute will be subject to arbitration in accordance with the laws of New York State.</p>
+    </section>
+
+    <section>
+      <h2>9. Termination of Agreement</h2>
+      <p>SheFoundUs reserves the right to terminate the rental agreement with any customer who violates these terms and conditions, and reserves the right to refuse service to any customer excluding cases based on race, ethnicity, religion, national origin, sex, pregnancy, or disability.</p>
+    </section>
+
+    <section>
+      <h2>10. Changes to Terms and Conditions</h2>
+      <p>SheFoundUs reserves the right to modify these terms and conditions at any time. Customers will be notified of any changes through the contact information provided.</p>
+    </section>
+
+    <section>
+      <h2>11. Governing Law</h2>
+      <p>These terms and conditions are governed by the laws of New York State. By using SheFoundUs services, you acknowledge that you have read, understood, and agree to these terms and conditions.</p>
+    </section>
+
+    <section>
+      <h2>12. Accessibility Statement</h2>
+      <p>www.SheFound.Us ("SheFoundUs") is committed to making our website content accessible and user friendly to everyone. If you are having difficulty viewing or navigating the content on this website, or notice any content, feature, or functionality that you believe is not fully accessible to people with disabilities, please email us at <a href="mailto:shey@shefound.us">shey@shefound.us</a>, include "Disabled Access" in the subject line, and provide a description of the specific feature you feel is not fully accessible or a suggestion for improvement. We take your feedback seriously and will consider it as we evaluate ways to accommodate all of our customers and our overall accessibility policies.</p>
+    </section>
+
+    <section>
+      <h2>13. Purchase</h2>
+      <p>Customers may rent or purchase items from SheFoundUs per the availability of the listed garments on the website. If a customer chooses to purchase an item after a rental, the final amount charged will equal the retail price less the rental price.</p>
+    </section>
+
+    <section>
+      <h2>14. User Generated Content and Social Media</h2>
+      <p>By tagging, mentioning, or otherwise identifying @shefound_us or SheFoundUs in public social media posts, you grant SheFoundUs and www.shefound.us a non-exclusive, royalty-free, worldwide, perpetual, and transferable license to use, reproduce, repost, publish, display, distribute, and modify such content for marketing, promotional, editorial, and website purposes. This includes, but is not limited to, use on www.shefound.us, social media channels, email marketing, digital advertisements, and other marketing materials.</p>
+      <p>By tagging or submitting content to SheFoundUs, you represent and warrant that:</p>
+      <ul>
+        <li>a. You own the content or otherwise have the necessary rights and permissions to grant the license described above.</li>
+        <li>b. The content does not infringe upon or violate the rights of any third party, including copyright, trademark, privacy, publicity, or other proprietary rights.</li>
+        <li>c. Any individuals appearing in the content have consented to the capture and public use of the image or video.</li>
+        <li>d. The content does not contain unlawful, defamatory, obscene, or otherwise inappropriate material.</li>
+      </ul>
+      <p>SheFoundUs may edit, crop, adapt, or otherwise modify submitted or tagged content for formatting or promotional purposes while maintaining the general integrity of the original content.</p>
+      <p>If you would prefer that your content not be used by SheFoundUs, you may contact us at <a href="mailto:shey@shefound.us">shey@shefound.us</a> with a link or description of the content, and we will remove the content as soon as possible.</p>
+    </section>
+
+    <section>
+      <h2>15. Content Rights Requests</h2>
+      <p>SheFoundUs may reach out to users via social media or other channels to request permission to use photographs, videos, or other content featuring SheFoundUs products ("Content"). By responding to such a request with confirmation (including but not limited to responding with a specified hashtag, written confirmation, or other affirmative response), you grant SheFoundUs and www.shefound.us a non-exclusive, royalty-free, worldwide, perpetual, and transferable license to use, reproduce, repost, publish, display, distribute, and modify such Content for marketing, promotional, editorial, and website purposes, including but not limited to use on www.shefound.us, social media channels, email marketing, digital advertisements, and other marketing materials.</p>
+      <p>You represent and warrant that you own or otherwise control all rights to the Content you grant to SheFoundUs, and that SheFoundUs' use of the Content will not infringe upon the rights of any third party. You further confirm that any individuals appearing in the Content have consented to the capture and public use of the Content.</p>
+    </section>
+
+    <section>
+      <h2>16. Contact Us</h2>
+      <p>If you have questions, concerns or feedback regarding these Terms and Conditions, you can send an email to us at <a href="mailto:shey@shefound.us">shey@shefound.us</a>.</p>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo"><img src="images/SFU.svg" alt="She Found Us" class="nav-logo-img">She Found <span>Us</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="styling.html">Rental</a></li>
+      <li><a href="services.html">Styling</a></li>
+      <li><a href="info.html">Info</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 She Found Us. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>
