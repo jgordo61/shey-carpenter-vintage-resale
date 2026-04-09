@@ -113,7 +113,7 @@ export default {
         },
         body: JSON.stringify({
           from: 'Shey Carpenter Vintage <onboarding@resend.dev>',
-          to: 'Shey@shefound.us',
+          to: 'scarpenter328@gmail.com',
           reply_to: email,
           subject: `New Booking Inquiry — ${first_name} ${last_name}`,
           html: `
