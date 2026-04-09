@@ -13,8 +13,8 @@
     .checkout-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      height: calc(100vh - var(--nav-h));
       margin-top: var(--nav-h);
-      align-items: start;
     }
 
     /* ── Order Summary (left) ── */
@@ -97,6 +97,8 @@
       padding: 72px 64px;
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
+      height: 100%;
     }
     .checkout-back {
       font-family: var(--sans);
