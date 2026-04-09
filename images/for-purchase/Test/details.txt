@@ -1,0 +1,3 @@
+Name: Test Item
+Price: $0.01
+Description: Square transaction test item. Do not purchase.
