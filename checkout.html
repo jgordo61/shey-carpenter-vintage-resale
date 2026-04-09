@@ -394,26 +394,33 @@
 
       // ── Initialize Square Web Payments SDK ──────────────────
       async function initSquare() {
+        const errorEl = document.getElementById('checkout-error');
+
         if (!window.Square) {
-          console.error('Square SDK not loaded');
+          errorEl.textContent = 'Payment system failed to load. Please refresh the page.';
+          errorEl.style.display = 'block';
           return;
         }
 
-        const payments = Square.payments(SQUARE_APP_ID, SQUARE_LOCATION_ID);
+        let payments;
+        try {
+          payments = Square.payments(SQUARE_APP_ID, SQUARE_LOCATION_ID);
+        } catch(e) {
+          errorEl.textContent = 'Payment system error: ' + e.message;
+          errorEl.style.display = 'block';
+          return;
+        }
 
-        const card = await payments.card({
-          style: {
-            '.input-container': { borderColor: 'transparent', borderBottomColor: '#E2D8CC' },
-            '.input-container.is-focus': { borderColor: 'transparent', borderBottomColor: '#8B7355' },
-            input: { color: '#1A1612', fontFamily: '"Montserrat", sans-serif', fontSize: '13px' },
-            'input::placeholder': { color: '#9B8E80' },
-            '.message-text': { color: '#9B8E80' },
-            '.message-icon': { color: '#9B8E80' },
-          }
-        });
-
-        await card.attach('#card-container');
-        document.getElementById('pay-btn').disabled = false;
+        let card;
+        try {
+          card = await payments.card();
+          await card.attach('#card-container');
+          document.getElementById('pay-btn').disabled = false;
+        } catch(e) {
+          errorEl.textContent = 'Could not load card field: ' + e.message;
+          errorEl.style.display = 'block';
+          return;
+        }
 
         document.getElementById('pay-btn').addEventListener('click', async () => {
           const btn = document.getElementById('pay-btn');
