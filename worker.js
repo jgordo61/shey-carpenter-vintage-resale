@@ -112,7 +112,7 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Shey Carpenter Vintage <onboarding@resend.dev>',
+          from: 'She Found Us <noreply@shefound.us>',
           to: 'shey@shefound.us',
           reply_to: email,
           subject: `New Booking Inquiry — ${first_name} ${last_name}`,
@@ -132,7 +132,8 @@ export default {
       }
 
       const err = await res.json();
-      return new Response(JSON.stringify({ success: false, error: err.message || 'Failed to send' }), { status: 500, headers });
+      const errMsg = err.message || err.name || JSON.stringify(err);
+      return new Response(JSON.stringify({ success: false, error: errMsg, status: res.status }), { status: 500, headers });
     }
 
     // ── Everything else → static assets ────────────────────────

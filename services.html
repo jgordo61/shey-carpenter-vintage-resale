@@ -190,7 +190,7 @@
         } else {
           btn.textContent = 'Send Inquiry';
           btn.disabled = false;
-          alert('Something went wrong. Please try again.');
+          alert('Error: ' + (json.error || 'Something went wrong. Please try again.'));
         }
       } catch {
         btn.textContent = 'Send Inquiry';
