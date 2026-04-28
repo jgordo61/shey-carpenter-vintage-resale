@@ -37,7 +37,7 @@ export default {
         return new Response(JSON.stringify({ success: false, error: 'Invalid request body' }), { status: 400, headers });
       }
 
-      const { sourceId, amount, currency = 'USD', buyerEmail, buyerName } = body;
+      const { sourceId, amount, currency = 'USD', buyerEmail, buyerName, items = [], shippingAddress = {} } = body;
 
       if (!sourceId || !amount) {
         return new Response(JSON.stringify({ success: false, error: 'Missing sourceId or amount' }), { status: 400, headers });
@@ -69,6 +69,51 @@ export default {
       const data = await squareRes.json();
 
       if (data.payment?.status === 'COMPLETED') {
+        // Send confirmation email to customer
+        if (buyerEmail) {
+          const itemRows = items.map(i =>
+            `<tr>
+               <td style="padding:8px 0;font-family:'Georgia',serif;font-size:15px;color:#3a3530;border-bottom:1px solid #e8e2da;">${i.name}${i.size ? ' &middot; ' + i.size : ''}</td>
+               <td style="padding:8px 0;font-family:'Georgia',serif;font-size:15px;color:#3a3530;border-bottom:1px solid #e8e2da;text-align:right;">$${parseFloat(i.price).toFixed(2)}</td>
+             </tr>`
+          ).join('');
+
+          const addr = [shippingAddress.street, shippingAddress.city, shippingAddress.state, shippingAddress.zip].filter(Boolean).join(', ');
+
+          await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              from: 'She Found Us <shey@shefound.us>',
+              to: buyerEmail,
+              subject: 'Your She Found Us Order',
+              html: `
+                <div style="max-width:560px;margin:0 auto;font-family:'Georgia',serif;color:#3a3530;background:#faf7f4;padding:40px 32px;">
+                  <h1 style="font-family:'Georgia',serif;font-weight:400;font-size:28px;margin:0 0 4px;">She Found Us</h1>
+                  <p style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#9a8e84;margin:0 0 32px;">Order Confirmation</p>
+
+                  <p style="font-size:16px;line-height:1.7;margin:0 0 24px;">Hi ${buyerName || 'there'},<br>Thank you for your order. We'll be in touch shortly with shipping details.</p>
+
+                  <table style="width:100%;border-collapse:collapse;margin-bottom:16px;">
+                    ${itemRows}
+                    <tr>
+                      <td style="padding:12px 0;font-family:'Georgia',serif;font-size:15px;font-weight:bold;">Total</td>
+                      <td style="padding:12px 0;font-family:'Georgia',serif;font-size:15px;font-weight:bold;text-align:right;">$${parseFloat(amount).toFixed(2)}</td>
+                    </tr>
+                  </table>
+
+                  ${addr ? `<p style="font-size:14px;color:#9a8e84;margin:0 0 32px;">Shipping to: ${addr}</p>` : ''}
+
+                  <p style="font-size:13px;color:#9a8e84;border-top:1px solid #e8e2da;padding-top:24px;margin:0;">Questions? Reply to this email or visit <a href="https://shefound.us" style="color:#3a3530;">shefound.us</a></p>
+                </div>
+              `,
+            }),
+          });
+        }
+
         return new Response(JSON.stringify({ success: true, paymentId: data.payment.id }), { headers });
       }
 

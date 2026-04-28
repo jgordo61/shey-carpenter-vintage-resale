@@ -465,6 +465,13 @@
                 amount: subtotal.toFixed(2),
                 buyerEmail: email,
                 buyerName: firstName + ' ' + lastName,
+                items: cart.map(i => ({ name: i.name, price: i.price, size: i.size })),
+                shippingAddress: {
+                  street: document.getElementById('address').value.trim(),
+                  city:   document.getElementById('city').value.trim(),
+                  state:  document.getElementById('state').value.trim(),
+                  zip:    document.getElementById('zip').value.trim(),
+                },
               }),
             });
 

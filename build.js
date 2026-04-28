@@ -88,7 +88,7 @@ function readDetails(folderPath) {
       }
     } else if (result.price === '—' && /\$/.test(line)) {
       // Purchase price (no duration keyword)
-      const match = line.match(/(\$[\d,]+\.?|[\d,]+\$)/);
+      const match = line.match(/(\$[\d,]+(?:\.\d+)?|[\d,]+(?:\.\d+)?\$)/);
       if (match) result.price = normalizePrice(match[0]);
     }
   }

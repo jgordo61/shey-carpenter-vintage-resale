@@ -588,7 +588,7 @@ footer {
 .product-card-img {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1/1;
+  aspect-ratio: 2/3;
   background: var(--muted);
 }
 .product-card-img img {
