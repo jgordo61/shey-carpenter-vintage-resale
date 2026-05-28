@@ -28,7 +28,26 @@
       "Bash(python3:*)",
       "Bash(cloudflared version:*)",
       "Bash(gh auth:*)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(xargs ls:*)",
+      "Bash(sips --help)",
+      "Bash(while read:*)",
+      "Bash(do sips:*)",
+      "Bash(1 done:*)",
+      "Bash(node build.js)",
+      "Bash(npm install:*)",
+      "Bash(./node_modules/.bin/wrangler deploy:*)",
+      "Bash(npm run:*)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(grep -n \"price\\\\|\\\\\\\\$\" \"/Users/josephgordon/Claude/Shey Carpenter Vintage Shop/build.js\")",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "Bash(node -e ' *)"
     ]
   }
 }
